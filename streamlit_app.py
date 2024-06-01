@@ -1,7 +1,15 @@
-import altair as alt
+import streamlit as st
 import numpy as np
 import pandas as pd
-import streamlit as st
+
+from langchain_core.prompts import ChatPromptTemplate
+from langchain.prompts import PromptTemplate
+
+from langchain_core.output_parsers import StrOutputParser
+from langchain_core.output_parsers import JsonOutputParser
+
+# Derived from https://colab.research.google.com/drive/1WemHvycYcoNTDr33w7p2HL3FF72Nj88i?usp=sharing
+
 
 """
 # Welcome to Streamlit!
