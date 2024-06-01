@@ -261,7 +261,7 @@ class GraphState(TypedDict):
 def categorize_email(state):
     """take the initial email and categorize it"""
     st.write("--- WE ARE CATEGORIZING INITIAL EMAIL---")
-    print("---WE are CATEGORIZING INITIAL EMAIL---")
+    print("\n\n---WE are CATEGORIZING INITIAL EMAIL---")
     
     initial_email = state['initial_email']
     num_steps = int(state['num_steps'])
@@ -277,7 +277,7 @@ def categorize_email(state):
 
 def research_info_search(state):
 
-    print("---RESEARCH INFO SEARCHING---")
+    print("\n\n---RESEARCH INFO SEARCHING---")
     initial_email = state["initial_email"]
     email_category = state["email_category"]
     research_info = state["research_info"]
@@ -305,7 +305,7 @@ def research_info_search(state):
     return {"research_info": full_searches, "num_steps":num_steps}
 
 def draft_email_writer(state):
-    print("---DRAFT EMAIL WRITER---")
+    print("\n\n---DRAFT EMAIL WRITER---")
     ## Get the state
     initial_email = state["initial_email"]
     email_category = state["email_category"]
@@ -326,7 +326,7 @@ def draft_email_writer(state):
     return {"draft_email": email_draft, "num_steps":num_steps}
 
 def analyze_draft_email(state):
-    print("---DRAFT EMAIL ANALYZER---")
+    print("\n\n---DRAFT EMAIL ANALYZER---")
     ## Get the state
     initial_email = state["initial_email"]
     email_category = state["email_category"]
@@ -348,7 +348,7 @@ def analyze_draft_email(state):
     return {"draft_email_feedback": draft_email_feedback, "num_steps":num_steps}
 
 def rewrite_email(state):
-    print("---ReWRITE EMAIL ---")
+    print("\n\n---ReWRITE EMAIL ---")
     ## Get the state
     initial_email = state["initial_email"]
     email_category = state["email_category"]
@@ -370,7 +370,7 @@ def rewrite_email(state):
     return {"final_email": final_email['final_email'], "num_steps":num_steps}
 
 def no_rewrite(state):
-    print("---NO REWRITE EMAIL ---")
+    print("\n\n---NO REWRITE EMAIL ---")
     ## Get the state
     draft_email = state["draft_email"]
     num_steps = state['num_steps']
@@ -384,7 +384,7 @@ def no_rewrite(state):
 #
 def state_printer(state):
     """print the state"""
-    print("---STATE PRINTER---")
+    print("\n\n---STATE PRINTER---")
     print(f"Initial Email: {state['initial_email']} \n" )
     print(f"Email Category: {state['email_category']} \n")
     print(f"Draft Email: {state['draft_email']} \n" )
