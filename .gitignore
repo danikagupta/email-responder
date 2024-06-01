@@ -1,2 +1,6 @@
 .idea
 .streamlit/secrets.toml
+draft_email_feedback.md
+draft_email.md
+email_category.md
+final_email.md
