@@ -1,48 +1,24 @@
 import streamlit as st
-import numpy as np
-import pandas as pd
 
-from langchain_core.prompts import ChatPromptTemplate
-from langchain.prompts import PromptTemplate
-
-from langchain_core.output_parsers import StrOutputParser
-from langchain_core.output_parsers import JsonOutputParser
+from graph import *
 
 # Derived from https://colab.research.google.com/drive/1WemHvycYcoNTDr33w7p2HL3FF72Nj88i?usp=sharing
 
+ 
+st.title("Email responder")
+draft_email="""
+I am emailing to say that I had a wonderful stay at your resort last week. \n
 
+I really appreciate what your staff did
+
+Thanks,
+Paul
 """
-# Welcome to Streamlit!
+if EMAIL := st.text_area("Type in customer email here",height=200,value=draft_email):
+    inputs = {"initial_email": EMAIL,"research_info": None, "num_steps":0}
+    output = app.invoke(inputs)
 
-Edit `/streamlit_app.py` to customize this app to your heart's desire :heart:.
-If you have any questions, checkout our [documentation](https://docs.streamlit.io) and [community
-forums](https://discuss.streamlit.io).
-
-In the meantime, below is an example of what you can do with just a few lines of code:
-"""
-
-num_points = st.slider("Number of points in spiral", 1, 10000, 1100)
-num_turns = st.slider("Number of turns in spiral", 1, 300, 31)
-
-indices = np.linspace(0, 1, num_points)
-theta = 2 * np.pi * num_turns * indices
-radius = indices
-
-x = radius * np.cos(theta)
-y = radius * np.sin(theta)
-
-df = pd.DataFrame({
-    "x": x,
-    "y": y,
-    "idx": indices,
-    "rand": np.random.randn(num_points),
-})
-
-st.altair_chart(alt.Chart(df, height=700, width=700)
-    .mark_point(filled=True)
-    .encode(
-        x=alt.X("x", axis=None),
-        y=alt.Y("y", axis=None),
-        color=alt.Color("idx", legend=None, scale=alt.Scale()),
-        size=alt.Size("rand", legend=None, scale=alt.Scale(range=[1, 150])),
-    ))
+    st.write("\n\n******** Final Email ************\n\n")
+    st.write(output['final_email'])
+    st.write("\n\n******** Details *************\n\n")
+    st.write(output)
