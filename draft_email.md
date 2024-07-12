@@ -1,10 +1,10 @@
-Dear Paul,
+Dear Alice,
 
-Thank you so much for taking the time to share your wonderful experience at our resort! We're thrilled to hear that our staff were able to make a positive impact on your stay. We truly value your feedback and appreciate your kind words.
+Thank you for your interest in purchasing Widget A from our store! We're more than happy to help answer your questions.
 
-We're grateful to have customers like you who take the time to share their experiences with us. Your feedback will help us to continue improving and providing exceptional service to our guests.
+Regarding your questions, I've checked on the product details for you. Unfortunately, I don't have the information readily available to provide a response to your questions about the colors, warranty period, and bulk purchase discounts. Could you please allow me some time to look into this further? I'll get back to you with the answers as soon as possible.
 
-Once again, thank you for your kind words and for choosing to stay with us. We hope to have the pleasure of welcoming you back to our resort again soon.
+Thank you for your patience and understanding. We appreciate your business and look forward to assisting you with your purchase.
 
 Best regards,
 Sarah, Resident Manager

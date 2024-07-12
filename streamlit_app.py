@@ -15,6 +15,8 @@ from langchain_community.tools.tavily_search import TavilySearchResults
 
 import pandas as pd
 
+import os
+
 
 
 # Derived from https://colab.research.google.com/drive/1WemHvycYcoNTDr33w7p2HL3FF72Nj88i?usp=sharing
@@ -182,7 +184,7 @@ draft_analysis_prompt = PromptTemplate(
 
     You never make up or add information that hasn't been provided by the research_info or in the initial_email.
 
-    Return the analysis a JSON with a single key 'draft_analysis' and no premable or explaination.
+    Return the analysis as just a JSON object with a single key 'draft_analysis' and no premable or explaination.
 
     <|eot_id|><|start_header_id|>user<|end_header_id|>
     INITIAL_EMAIL: {initial_email} \n\n
@@ -228,6 +230,7 @@ rewrite_chain = rewrite_email_prompt | GROQ_LLM | JsonOutputParser()
 #
 # Web search
 #
+os.environ['TAVILY_API_KEY'] = st.secrets["TAVILY_API_KEY"]
 web_search_tool=TavilySearchResults(k=1)
 
 
@@ -322,6 +325,7 @@ def draft_email_writer(state):
 
     email_draft = draft_email['email_draft']
     write_markdown_file(email_draft, "draft_email")
+    st.write(f"Draft Email\n{email_draft}")
 
     return {"draft_email": email_draft, "num_steps":num_steps}
 
@@ -366,7 +370,7 @@ def rewrite_email(state):
                                                 "email_analysis": draft_email_feedback}
                                                )
 
-    write_markdown_file(str(final_email), "final_email")
+    write_markdown_file(final_email['final_email'], "final_email")
     return {"final_email": final_email['final_email'], "num_steps":num_steps}
 
 def no_rewrite(state):
@@ -537,8 +541,8 @@ def main():
         output = app.invoke(inputs)
 
         st.write(f"\n# Final Email \n\n {output['final_email']}")
-        with st.expander("Details"):
-            st.table(pd.DataFrame(output).transpose())
+        #with st.expander("Details"):
+        #    st.table(pd.DataFrame(output).transpose())
 
 if __name__ == "__main__":
     main()
